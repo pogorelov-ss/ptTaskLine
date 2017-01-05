@@ -8,32 +8,29 @@ services:
             service: app
 #        image:  decorist/zappalambda:cas-dev
         build:
-            context: ../djTasklLine
+            context: ../djTaskLine
             dockerfile: ./Dockerfile
         container_name: dj-app
         command: runserver
 #        command: ["--http", ":8000"]
         environment:
             DJANGO_SETTINGS_MODULE: dj_main.settings.dev
-            RDS_HOSTNAME: mysql
-            RDS_PORT: 3306
-            RDS_DB_NAME: auth-client
             ALLOWED_HOST: login.localhost
             UWSGI_INI: uwsgi.ini
             UWSGI_WORKERS: 2
             DJ_DEBUG: 1
         volumes:
-            - ../projectCAS/dj_app/:/dj_app
-#        ports:
-#            - "8000:8000"
-#            - "9191:9191"
-#        links:
-#            - mysql
-##            - redis
+            - ../djTaskLine/dj_app/:/dj_app
+        ports:
+            - "8000:8000"
+            - "9191:9191"
+        links:
+            - postgresql
+            - redis
 ##            - celery-worker
-#        depends_on:
-#            - mysql
-##            - redis
+        depends_on:
+            - postgresql
+            - redis
 ##            - celery-worker
 
 

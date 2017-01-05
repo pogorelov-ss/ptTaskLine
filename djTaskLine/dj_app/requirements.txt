@@ -1,0 +1,13 @@
+
+Django
+
+### PostgresSQL driver
+psycopg2>=2.5.4
+
+### MySQL driver
+# mysqlclient
+
+uwsgi
+
+opbeat
+

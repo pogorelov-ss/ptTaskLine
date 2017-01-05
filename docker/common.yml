@@ -18,8 +18,8 @@ services:
             - ./data/postgresql:/var/lib/postgresql/data
         environment:
             POSTGRES_PASSWORD: xxpassxx
-            POSTGRES_USER: user_name
-            POSTGRES_DB: test_db
+            POSTGRES_USER: db_user
+            POSTGRES_DB: taskline
 
     mysql:
         image: mysql:latest
@@ -37,15 +37,16 @@ services:
     app:
         container_name: uwsgi
         environment:
-            DJANGO_SETTINGS_MODULE: dj_main.settings
-            RDS_DB_NAME: test_db
+            DJANGO_SETTINGS_MODULE: dj_main.settings.dev
+            RDS_DB_NAME: taskline
             RDS_USERNAME: db_user
-            RDS_PASSWORD: iloved3cor
-            RDS_HOSTNAME: postgre
+            RDS_PASSWORD: xxpassxx
+            RDS_HOSTNAME: postgresql
             RDS_PORT: 5432
             ALLOWED_HOST: localhost
             DJ_DEBUG: 1
             CACHE_HOST: redis
+            OPBEAT_SECRET_TOKEN: 9cefdda0ab876d96ae404fedeb72a1c05c50e31a
 
     proxy:
         image: decorist/zappalambda:nginx
