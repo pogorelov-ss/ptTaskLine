@@ -1,6 +1,6 @@
 .idea/
 docker/data/*
-djTaskLine/db.sqlite3
+djTaskLine/dj_app/db.sqlite3
 
 djTaskLine/collect/*
 # Elastic Beanstalk Files

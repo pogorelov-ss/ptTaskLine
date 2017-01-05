@@ -1,0 +1,70 @@
+version: '2'
+
+services:
+    cache:
+        image: redis:latest
+        container_name: Redis
+        ports:
+            - "6379:6379"
+        # environment:
+        #     X: x
+
+    postgresql:
+        image: postgres:9.5
+        container_name: Postgre
+        ports:
+            - "5432:5432"
+        volumes:
+            - ./data/postgresql:/var/lib/postgresql/data
+        environment:
+            POSTGRES_PASSWORD: xxpassxx
+            POSTGRES_USER: user_name
+            POSTGRES_DB: test_db
+
+    mysql:
+        image: mysql:latest
+        container_name: MySQL
+        ports:
+            - "3306:3306"
+        volumes:
+            - ./data/mysql:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: xhkwyb
+            MYSQL_USER: db_user
+            MYSQL_PASSWORD : iloved3cor
+            MYSQL_DATABASE: main_db
+
+    app:
+        container_name: uwsgi
+        environment:
+            DJANGO_SETTINGS_MODULE: dj_main.settings
+            RDS_DB_NAME: test_db
+            RDS_USERNAME: db_user
+            RDS_PASSWORD: iloved3cor
+            RDS_HOSTNAME: postgre
+            RDS_PORT: 5432
+            ALLOWED_HOST: localhost
+            DJ_DEBUG: 1
+            CACHE_HOST: redis
+
+    proxy:
+        image: decorist/zappalambda:nginx
+        container_name: nginx
+        ports:
+            - "80:80"
+            - "443:443"
+        environment:
+            ALLOWED_HOST: localhost
+            NGINX_MAIN_PORT: 80
+            NGINX_REDIRECT_PORT: 88
+
+    logs:
+        image: sergeidc/docker-logentries-entrypoint:latest
+        container_name: logentries
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+            - ./logentries/entrypoint.sh:/entrypoint.sh
+        environment:
+            LOGSTOKEN: 4c-
+            EVENTSTOKEN: 86-
+        command: []

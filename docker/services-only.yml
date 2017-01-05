@@ -1,0 +1,17 @@
+version: '2'
+services:
+
+#    mysql:
+#        extends:
+#            file: common.yml
+#            service: mysql
+
+    redis:
+        extends:
+            file: common.yml
+            service: cache
+
+    postgresql:
+        extends:
+            file: common.yml
+            service: postgresql
