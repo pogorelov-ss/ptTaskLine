@@ -63,3 +63,38 @@ coverage.xml
 # Django stuff:
 *.log
 local_settings.py
+
+# Front End Ignores
+
+# compiled output
+djTaskLine/ng_client_app/dist
+djTaskLine/ng_client_app/tmp
+
+# dependencies
+djTaskLine/ng_client_app/node_modules
+djTaskLine/ng_client_app/bower_components
+
+# IDEs and editors
+djTaskLine/ng_client_app/.idea
+djTaskLine/ng_client_app/.vscode
+djTaskLine/ng_client_app/.project
+djTaskLine/ng_client_app/.classpath
+djTaskLine/ng_client_app/*.launch
+djTaskLine/ng_client_app/.settings/
+
+# misc
+djTaskLine/ng_client_app/.sass-cache
+djTaskLine/ng_client_app/connect.lock
+djTaskLine/ng_client_app/coverage/*
+djTaskLine/ng_client_app/libpeerconnection.log
+djTaskLine/ng_client_app/npm-debug.log
+djTaskLine/ng_client_app/testem.log
+djTaskLine/ng_client_app/typings
+
+# e2e
+djTaskLine/ng_client_app/e2e/*.js
+djTaskLine/ng_client_app/e2e/*.map
+
+#System Files
+djTaskLine/ng_client_app/.DS_Store
+djTaskLine/ng_client_app/Thumbs.db
