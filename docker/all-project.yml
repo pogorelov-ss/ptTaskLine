@@ -33,6 +33,14 @@ services:
             - redis
 ##            - celery-worker
 
+    ng-client-app:
+        extends:
+            file: ../djTaskLine/ng_client_app/docker-compose.yml
+            service: serve
+        build:
+            context: ../djTaskLine
+            dockerfile: ./ng_client_app/Dockerfile
+        container_name: ng-client-app
 
 #    nginx:
 #        extends:
