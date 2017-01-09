@@ -11,3 +11,8 @@ uwsgi
 
 opbeat
 
+# dev -- must be removed for prod
+
+django_extensions
+django-debug-toolbar
+jupyter

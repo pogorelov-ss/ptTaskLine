@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'opbeat.contrib.django',
+
+    'apps.common_models',
 ]
 
 MIDDLEWARE = [
