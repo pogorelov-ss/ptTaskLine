@@ -7,9 +7,14 @@ psycopg2>=2.5.4
 ### MySQL driver
 # mysqlclient
 
+### Application server https://uwsgi-docs.readthedocs.io/en/latest/
 uwsgi
 
+### logging https://opbeat.com/
 opbeat
+
+### Auth
+django-allauth
 
 # dev -- must be removed for prod
 

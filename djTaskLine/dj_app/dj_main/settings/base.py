@@ -25,8 +25,19 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', '8vyxg6=&^wb!0a8sqt6)-miyhd+#_k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# https://docs.djangoproject.com/en/1.10/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = []
 
+# The “sites” framework
+# https://docs.djangoproject.com/en/1.10/ref/contrib/sites/
+SITE_ID = 1
+
+# django AllAuth
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_USERNAME_REQUIRED = False
+# fake email
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Application definition
 
@@ -37,8 +48,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    # logging
     'opbeat.contrib.django',
+    # auth
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # 'allauth.socialaccount.providers.facebook',
 
     'apps.common_models',
 ]
@@ -93,6 +110,13 @@ DATABASES = {
     }
 }
 
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
