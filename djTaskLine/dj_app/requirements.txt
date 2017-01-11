@@ -16,7 +16,13 @@ opbeat
 ### Auth
 django-allauth
 
-# dev -- must be removed for prod
+### http://www.django-rest-framework.org/
+djangorestframework
+markdown
+django-filter
+
+##########################################
+# dev and test -- must be removed for prod
 
 django_extensions
 django-debug-toolbar
