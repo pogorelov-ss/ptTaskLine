@@ -16,8 +16,14 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
+from djTaskLine.dj_app.apps.user_profiles.views import UserProfileTemporaryView
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('allauth.urls')),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+
+    url(r'api/(?P<version>[v1|v2]+)/users/', include('apps.user_profiles.urls')),
+
+    url(r'^accounts/profile/', view=UserProfileTemporaryView.as_view(), name='user-profile')
 ]
