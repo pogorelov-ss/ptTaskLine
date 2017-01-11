@@ -21,3 +21,8 @@ django-allauth
 django_extensions
 django-debug-toolbar
 jupyter
+
+
+# test
+
+factory_boy
