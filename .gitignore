@@ -68,34 +68,34 @@ local_settings.py
 # Front End Ignores
 
 # compiled output
-djTaskLine/ng_client_app/dist
-djTaskLine/ng_client_app/tmp
+ngTaskLine/dist
+ngTaskLine/tmp
 
 # dependencies
-djTaskLine/ng_client_app/node_modules
-djTaskLine/ng_client_app/bower_components
+ngTaskLine/node_modules
+ngTaskLine/bower_components
 
 # IDEs and editors
-djTaskLine/ng_client_app/.idea
-djTaskLine/ng_client_app/.vscode
-djTaskLine/ng_client_app/.project
-djTaskLine/ng_client_app/.classpath
-djTaskLine/ng_client_app/*.launch
-djTaskLine/ng_client_app/.settings/
+ngTaskLine/.idea
+ngTaskLine/.vscode
+ngTaskLine/.project
+ngTaskLine/.classpath
+ngTaskLine/*.launch
+ngTaskLine/.settings/
 
 # misc
-djTaskLine/ng_client_app/.sass-cache
-djTaskLine/ng_client_app/connect.lock
-djTaskLine/ng_client_app/coverage/*
-djTaskLine/ng_client_app/libpeerconnection.log
-djTaskLine/ng_client_app/npm-debug.log
-djTaskLine/ng_client_app/testem.log
-djTaskLine/ng_client_app/typings
+ngTaskLine/.sass-cache
+ngTaskLine/connect.lock
+ngTaskLine/coverage/*
+ngTaskLine/libpeerconnection.log
+ngTaskLine/npm-debug.log
+ngTaskLine/testem.log
+ngTaskLine/typings
 
 # e2e
-djTaskLine/ng_client_app/e2e/*.js
-djTaskLine/ng_client_app/e2e/*.map
+ngTaskLine/e2e/*.js
+ngTaskLine/e2e/*.map
 
 #System Files
-djTaskLine/ng_client_app/.DS_Store
-djTaskLine/ng_client_app/Thumbs.db
+ngTaskLine/.DS_Store
+ngTaskLine/Thumbs.db
