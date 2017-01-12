@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from djTaskLine.dj_app.apps.user_profiles.views import UserProfileTemporaryView
+from apps.user_profiles.views import UserProfileTemporaryView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),

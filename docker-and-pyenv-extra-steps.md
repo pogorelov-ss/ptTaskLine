@@ -63,16 +63,19 @@ Installed:
   sqlite-devel.x86_64 3.14.2-1.fc25                                             
   zlib-devel.x86_64 1.2.8-10.fc24
 ```   
-  
+
+
 #### create vitualenv
 ``pyenv virtualenv 3.5.2 web``
 
 and activate
 ``pyenv activate web``
+
+### if you need new clean Django project
 ### Create project dir
 
 #### Install Django
 ``pip install django``
 
 #### Create project
-``django-admin startproject djTaskLine``
+``django-admin startproject projectName``
