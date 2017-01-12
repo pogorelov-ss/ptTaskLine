@@ -26,8 +26,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
 		let newWindow = window.open(link, "_blank",
 		'menubar=no,toolbar=no,location=no,directories=no,status=no,scrollbars=no,resizable=no,dependent,width=450,height=500,left=600,top=100');
 		if (newWindow) newWindow.addEventListener('unload', (event)=> {
-			if (window.location.host === newWindow.location.host) {
-
+			console.log(newWindow.location.pathname)
+			if (/^\/accounts/g.test(newWindow.location.pathname)) {
+				newWindow.close();
 			}
 		});
 		return newWindow ? false : true; // allow the link to work if popup is blocked
