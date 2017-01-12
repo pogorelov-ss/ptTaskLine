@@ -1,0 +1,28 @@
+g.color-change
+    animation: colorChange 3s infinite
+
+.eye.cheering
+    animation: cheering 2.5s infinite
+
+@keyframes colorChange
+    0%
+        fill: rgb(255, 255, 255)
+    33%
+        fill: rgb(255, 0, 0)
+    66%
+        fill: rgb(255, 255, 0)
+    100%
+        fill: rgb(255, 255, 255)
+
+@keyframes cheering
+    0%
+        transform: translateY(0%)
+    10%
+        transform: translateY(30%)
+    20%
+        transform: translateY(15%)
+    30%
+        transform: translateY(30%)
+    40%
+        transform: translateY(0%)
+

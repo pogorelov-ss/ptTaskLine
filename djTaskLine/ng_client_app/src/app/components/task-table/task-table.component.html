@@ -1,0 +1,31 @@
+<h2 class="text-center">Task Overview</h2>
+<div class="request-loader" *ngIf="pivotalService.pendingRequest">
+    <app-kottans-logo svgwidth="350px" svgheight="300px" color="#ffffff" animated="cheering"></app-kottans-logo>
+    <h3 class="text-center">Loading . . .</h3>
+</div>
+<table class="table table-striped table-bordered" *ngIf="!pivotalService.pendingRequest">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Requester</th>
+            <th>Main Owner</th>
+            <th>Type</th>
+            <th>Timestamp</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let story of stories">
+            <td>#{{story.id}}</td>
+            <td class="name">{{story.name}}</td>
+            <td [title]="story.requester.person.name" [style.color]="'#' + story.requester.project_color">{{story.requester.person.initials}}</td>
+            <td
+                [title]="story.owner ? story.owner.person.name : 'No owners for this story yet'"
+                [style.color]="story.owner ? '#' + story.owner.project_color : '#ffffff'"
+            >{{story.owner ? story.owner.person.initials : 'Noone'}}</td>
+            <td>{{story.story_type}}</td>
+            <td>None</td>
+        </tr>
+    </tbody>
+</table>
+

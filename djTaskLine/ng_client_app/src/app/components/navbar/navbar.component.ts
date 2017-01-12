@@ -1,24 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PivotalService } from '../../services/pivotal.service';
+import { KottansLogoComponent } from '../kottans-logo/kottans-logo.component';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.sass']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
+  connections:Array<any>;
 
   constructor(private pivotalService:PivotalService) {
-
+    this.connections = [];
+    this.connections.push(
+      this.pivotalService.onAllDataReady
+        .subscribe(() => console.log(this.pivotalService))
+    )
   }
 
   ngOnInit() {
-    this.pivotalService.getMyUserInfo()
-      .subscribe(data => console.log(data));
-    this.pivotalService.getAllStartedStories()
-      .subscribe(data => console.log('getAllStartedStories', data));
-    this.pivotalService.getProjectUsers()
-      .subscribe(data => console.log('getProjectUsers', data));
+
+  }
+
+  ngOnDestroy() {
+    this.connections.forEach(connection => connection.unsubscribe())
   }
 
 }
