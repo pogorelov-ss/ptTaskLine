@@ -49,7 +49,7 @@ services:
             OPBEAT_SECRET_TOKEN: 9cefdda0ab876d96ae404fedeb72a1c05c50e31a
 
     proxy:
-        image: decorist/zappalambda:nginx
+#        image: decorist/zappalambda:nginx
         container_name: nginx
         ports:
             - "80:80"

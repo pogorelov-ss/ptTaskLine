@@ -11,8 +11,8 @@ services:
             context: ../djTaskLine
             dockerfile: ./Dockerfile
         container_name: dj-app
-        command: runserver
-#        command: ["--http", ":8000"]
+#        command: runserver
+        command: ["--socket", ":8000", "--stats", ":9191"]
         environment:
             DJANGO_SETTINGS_MODULE: dj_main.settings.dev
             ALLOWED_HOST: login.localhost
@@ -42,16 +42,23 @@ services:
             dockerfile: ./ng_client_app/Dockerfile
         container_name: ng-client-app
 
-#    nginx:
-#        extends:
-#            file: common.yml
-#            service: proxy
-#        container_name: nginx-http
-#        volumes:
-#            - ../projectCAS/nginx/conf.templ.http:/etc/nginx/conf.templ:ro
-#            - ../projectCAS/nginx/entrypoint.sh:/entrypoint.sh
-#            - ../projectCAS/nginx/conf.templ:/etc/nginx/conf.templ:ro
-#            - ../projectCAS/dj_app/collect:/var/www/collect:ro
-#            - ../projectCAS/nginx/includes:/etc/nginx/includes:ro
-#        links:
-#            - dj-app
+
+    nginx:
+        extends:
+            file: common.yml
+            service: proxy
+        build:
+            context: ../nginx
+            dockerfile: ./Dockerfile
+        container_name: nginx-http
+        volumes:
+            - ../nginx/config/conf.templ.local:/etc/nginx/conf.templ:ro
+            - ../nginx/config/includes:/etc/nginx/includes:ro
+#            - ../nginx/config/entrypoint.sh:/entrypoint.sh
+            - ../djTaskLine/dj_app/collect:/var/www/collect:ro
+        links:
+            - dj-app
+            - ng-client-app
+        depends_on:
+            - dj-app
+            - ng-client-app
