@@ -5,7 +5,7 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 # Install app dependencies
-COPY ./ng_client_app/package.json /usr/src/app/
+COPY ./package.json /usr/src/app/
 RUN npm install npm -g
 RUN npm install -g angular-cli
 RUN npm uninstall
