@@ -7,7 +7,7 @@ from django.dispatch import receiver
 
 
 class PTProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, related_name='pt_profile', on_delete=models.CASCADE)
     api_token = models.UUIDField(verbose_name='pivotaltracker API token', null=True)
     related_json = JSONField(blank=True, null=True)
 
@@ -27,8 +27,8 @@ def save_user_profile(sender, instance, **kwargs):
 
 
 class Project(models.Model):
-    user = models.ForeignKey(User)
-    pt_profile = models.ForeignKey(PTProfile)
+    user = models.ForeignKey(User, related_name='project', on_delete=models.CASCADE)
+    pt_profile = models.ForeignKey(PTProfile, related_name='project', on_delete=models.CASCADE)
     project_id = models.IntegerField(verbose_name='pivotaltracker Project ID')
 
     class Meta:

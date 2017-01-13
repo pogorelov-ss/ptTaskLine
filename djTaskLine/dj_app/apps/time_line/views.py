@@ -24,7 +24,8 @@ class ProjectViewSet(DetailSerializerMixin, viewsets.ModelViewSet):
         serializer.save(user=self.request.user)
 
 
-class PTProfileViewSet(viewsets.ModelViewSet):
+class PTProfileViewSet(DetailSerializerMixin, viewsets.ModelViewSet):
+    serializer_detail_class = PTProfileSerializer
     permission_classes = (IsOwner, permissions.IsAuthenticated,)
     queryset = PTProfile.objects.all()
     serializer_class = PTProfileSerializerList
