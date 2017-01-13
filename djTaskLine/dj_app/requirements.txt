@@ -20,6 +20,7 @@ django-allauth
 djangorestframework
 markdown
 django-filter
+coreapi
 
 ##########################################
 # dev and test -- must be removed for prod

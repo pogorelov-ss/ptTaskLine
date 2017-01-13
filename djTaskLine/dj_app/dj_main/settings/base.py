@@ -14,6 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA_DIR = os.path.dirname(os.path.join('..', os.path.join('..', BASE_DIR)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -60,7 +61,7 @@ INSTALLED_APPS = [
     # 'allauth.socialaccount.providers.facebook',
     'rest_framework',
 
-    'apps.common_models',
+    'apps.time_line',
     'apps.user_profiles',
 ]
 
@@ -155,6 +156,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(DATA_DIR, 'collect/media')
+STATIC_ROOT = os.path.join(DATA_DIR, 'collect/static')
 
 # DRF
 REST_FRAMEWORK = {
@@ -178,7 +182,7 @@ OPBEAT = {
     'ORGANIZATION_ID': os.environ.get('OPBEAT_ORGANIZATION_ID', 'fb29d4ecd7be4db3ab3e894c1a3cc347'),
     'APP_ID': os.environ.get('OPBEAT_APP_ID', '89859b2bee'),
     'SECRET_TOKEN': os.environ.get('OPBEAT_SECRET_TOKEN', ''),
-    'DEBUG': True,
+    # 'DEBUG': True,
 }
 
 LOGGING = {
