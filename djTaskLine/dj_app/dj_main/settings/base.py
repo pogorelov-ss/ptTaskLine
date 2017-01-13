@@ -58,7 +58,7 @@ INSTALLED_APPS = [
     # 'allauth.socialaccount.providers.facebook',
     'rest_framework',
 
-    'apps.common_models',
+    'apps.time_line',
     'apps.user_profiles',
 ]
 
