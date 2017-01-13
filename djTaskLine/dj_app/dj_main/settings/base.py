@@ -36,7 +36,8 @@ SITE_ID = 1
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_ADAPTER = 'apps.users.adapter.CustomAccountAdapter'
+# ACCOUNT_ADAPTER = 'apps.users.adapter.CustomAccountAdapter'
+# LOGIN_REDIRECT_URL = '/'
 # fake email
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
