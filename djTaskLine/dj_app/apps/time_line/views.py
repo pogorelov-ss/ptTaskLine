@@ -3,9 +3,9 @@ from rest_framework import viewsets, permissions
 
 from .mixins import DetailSerializerMixin
 from .permissions import IsOwner, IsOwnerOrReadOnly
-from .models import PTProfile, Project
+from .models import PTProfile, Project, TaskLine
 from .serializers import UserSerializer, PTProfileSerializer, ProjectSerializer, PTProfileSerializerList, \
-    ProjectSerializerList
+    ProjectSerializerList, TaskLineSerializer
 
 
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
@@ -29,3 +29,12 @@ class PTProfileViewSet(DetailSerializerMixin, viewsets.ModelViewSet):
     permission_classes = (IsOwner, permissions.IsAuthenticated,)
     queryset = PTProfile.objects.all()
     serializer_class = PTProfileSerializerList
+
+
+class TaskLineViewSet(viewsets.ModelViewSet):
+    permission_classes = (IsOwnerOrReadOnly, permissions.IsAuthenticated,)
+    queryset = TaskLine.objects.all()
+    serializer_class = TaskLineSerializer
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)

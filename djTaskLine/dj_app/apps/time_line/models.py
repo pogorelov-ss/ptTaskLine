@@ -33,3 +33,10 @@ class Project(models.Model):
 
     class Meta:
         pass
+
+
+class TaskLine(models.Model):
+    user = models.ForeignKey(User, related_name='task_line')
+    project = models.ForeignKey(Project, related_name='task_line', null=True)
+    task_id = models.IntegerField()
+    started_at = models.DateTimeField(auto_now_add=True)

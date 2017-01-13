@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
 
-from .models import PTProfile, Project
+from .models import PTProfile, Project, TaskLine
 
 
 class ProjectSerializerList(serializers.ModelSerializer):
@@ -9,6 +9,13 @@ class ProjectSerializerList(serializers.ModelSerializer):
     class Meta:
         model = Project
         fields = ('id', 'project_id', 'user', 'pt_profile')
+
+
+class TaskLineSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = TaskLine
+        fields = ('task_id', 'started_at')
 
 
 class PTProfileSerializer(serializers.ModelSerializer):

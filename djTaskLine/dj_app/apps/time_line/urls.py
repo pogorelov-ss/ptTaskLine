@@ -11,6 +11,7 @@ router = DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'pt-profiles', views.PTProfileViewSet)
 router.register(r'projects', views.ProjectViewSet)
+router.register(r'task-lines', views.TaskLineViewSet)
 
 urlpatterns = [
     url(r'^', include(router.urls)),
