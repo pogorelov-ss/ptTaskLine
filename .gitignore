@@ -3,7 +3,7 @@ docker/data/*
 djTaskLine/dj_app/db.sqlite3
 .ipynb_checkpoints/
 *.ipynb
-djTaskLine/collect/*
+djTaskLine/dj_app/collect/*
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml

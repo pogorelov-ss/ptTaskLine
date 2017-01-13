@@ -54,8 +54,8 @@ services:
         volumes:
             - ../nginx/config/conf.templ.local:/etc/nginx/conf.templ:ro
             - ../nginx/config/includes:/etc/nginx/includes:ro
-#            - ../nginx/config/entrypoint.sh:/entrypoint.sh
             - ../djTaskLine/dj_app/collect:/var/www/collect:ro
+#            - ../nginx/config/entrypoint.sh:/entrypoint.sh
         links:
             - dj-app
             - ng-client-app

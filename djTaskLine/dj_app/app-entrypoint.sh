@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 python manage.py migrate  --noinput                # Apply database migrations
-python manage.py collectstatic --noinput  # Collect static files
+python manage.py collectstatic -c --noinput  # Collect static files
 #python manage.py compress --force
 ROOT_DIR=$(pwd)
 UWSGI_INI_PATH=$ROOT_DIR/uwsgi/

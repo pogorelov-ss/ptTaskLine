@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
     url(r'api/(?P<version>[v1|v2]+)/users/', include('apps.user_profiles.urls')),
+    url(r'api/(?P<version>[v1|v2]+)/time-line/', include('apps.time_line.urls')),
 
     url(r'^accounts/profile/', view=UserProfileTemporaryView.as_view(), name='user-profile')
 ]
