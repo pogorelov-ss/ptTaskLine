@@ -13,4 +13,7 @@ export class Story {
     owned_by_id:number
     requester?:any
     owner?:any
+    timestamp?:string|Date
+    user_own_story:boolean
+    comments?:Array<any>
 }

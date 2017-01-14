@@ -4,13 +4,22 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TitleComponent } from './components/title/title.component';
-import { TaskTableComponent } from './components/task-table/task-table.component';
+import { StoryDetailsComponent } from './components/story-details/story-details.component';
+import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 
 
 const appRoutes:Routes = [
     {
         path: '',
         component: TitleComponent
+    },
+    {
+        path: 'story/:story_id',
+        component: StoryDetailsComponent
+    },
+    {
+        path: 'edit-profile',
+        component: EditProfileComponent
     }
 ]
 
