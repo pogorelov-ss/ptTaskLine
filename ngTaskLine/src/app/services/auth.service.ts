@@ -39,6 +39,7 @@ export class AuthService {
 	getMyUser() {
 		let headers = new Headers();
         headers.append('Content-Type', 'application/json');
+        headers.append('X-CSRFTOKEN', this.getCookie('csrftoken'));
         return this._http.get(this.myUserUrl, {headers: headers})
             .map(res => {
                     return res.json()
@@ -46,6 +47,13 @@ export class AuthService {
                 error => {
                     console.error("Error during get user info\n", error);
                 });
+	}
+
+	private getCookie(name:string):string {
+		let matches = document.cookie.match(new RegExp(
+			"(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+		));
+		return matches ? decodeURIComponent(matches[1]) : undefined;
 	}
 
 }

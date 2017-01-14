@@ -41,6 +41,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 		'menubar=no,toolbar=no,location=no,directories=no,status=no,scrollbars=no,resizable=no,dependent,width=450,height=500,left=600,top=100');
 		if (newWindow) newWindow.addEventListener('unload', (event)=> {
 			if (/^\/accounts/g.test(newWindow.location.pathname)) {
+				console.log('authCHECK')
 				this.authService.authCheck();
 			}
 		});
