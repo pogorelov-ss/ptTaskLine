@@ -23,7 +23,7 @@ def create_user_profile(sender, instance, created, **kwargs):
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
-    instance.ptprofile.save()
+    instance.pt_profile.save()
 
 
 class Project(models.Model):

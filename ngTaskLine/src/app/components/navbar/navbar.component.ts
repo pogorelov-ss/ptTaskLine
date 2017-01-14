@@ -1,5 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { PivotalService } from '../../services/pivotal.service';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 import { KottansLogoComponent } from '../kottans-logo/kottans-logo.component';
 
 @Component({
@@ -8,27 +8,41 @@ import { KottansLogoComponent } from '../kottans-logo/kottans-logo.component';
 	styleUrls: ['./navbar.component.sass']
 })
 export class NavbarComponent implements OnInit, OnDestroy {
-	connections:Array<any>;
+	private connections:Array<any>;
+	public user:any;
+	public userInitails:boolean;
 
-	constructor(private pivotalService:PivotalService) {
+	constructor(private authService:AuthService, private cd: ChangeDetectorRef) {
 		this.connections = [];
-		this.connections.push(
-			this.pivotalService.onAllDataReady
-				.subscribe(() => console.log(this.pivotalService))
-		)
+		if (this.authService.userDataReady) {
+			this.init()
+		} else {
+			this.connections.push(
+				this.authService.onUserReady
+					.subscribe(() => {
+						this.init()
+						this.cd.detectChanges()
+					})
+			)
+		}
 	}
 
 	ngOnInit() {
 
 	}
 
-	openPopUp(link:string, method:string) {
+	init():void {
+		this.user = this.authService.userData;
+		this.userInitails = this.user.username.slice(0,2).toUpperCase();
+	}
+
+	openPopUp(link:string, method:string):boolean {
 		let newWindow = window.open(link, "_blank",
 		'menubar=no,toolbar=no,location=no,directories=no,status=no,scrollbars=no,resizable=no,dependent,width=450,height=500,left=600,top=100');
 		if (newWindow) newWindow.addEventListener('unload', (event)=> {
-			console.log(newWindow.location.pathname)
 			if (/^\/accounts/g.test(newWindow.location.pathname)) {
-				newWindow.close();
+				console.log('authCHECK')
+				this.authService.authCheck();
 			}
 		});
 		return newWindow ? false : true; // allow the link to work if popup is blocked

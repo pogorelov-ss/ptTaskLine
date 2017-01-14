@@ -1,0 +1,31 @@
+<div id="story" *ngIf="story">
+    <header class="story-header">
+        <div class="row">
+            <div class="col-md-4">
+                <img [src]="'/assets/images/' + story.story_type + '.png'" alt="" class="story-thumb">
+            </div>
+            <div class="col-md-8">
+                <h4>#{{story.id}}</h4>
+                <h2>{{story.name}}</h2>
+                <h5>Created at: {{formatDate(story.created_at)}}</h5>
+                <p>{{story.description}}</p>
+                <a [href]="story.url" class="btn btn-warning btn-block" target="_blank">View In Pivotal</a>
+                <div class="date-block">{{story.timestamp ? 'Timestamp: ' + formatDate(story.timestamp.started_at) : ''}}
+                <button
+                    *ngIf="!story.timestamp && story.user_own_story"
+                    class="btn btn-success btn-block"
+                    (click)="setTimeStamp(story)">Stamp
+                </button></div>
+            </div>
+        </div>
+    </header>
+    <div class="story-tracks">
+        <h2 [class.hidden]="!story.comments.length">Comments</h2>
+        <div *ngFor="let comment of story.comments">
+            <div class="well">
+                <h5><b>{{comment.author?.person.name}}</b> - <i>{{formatDate(comment.created_at)}}</i></h5>
+                <p>{{comment.text}}</p>
+            </div>
+        </div>
+    </div>
+</div>
